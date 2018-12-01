@@ -22,6 +22,7 @@ RUN cd &&\
     cd /home/krnnt/corpus2 &&\
     mkdir bin &&\
     cd bin &&\
+    export CXXFLAGS="--std=c++0x" &&\
     cmake .. &&\
     make -j4 &&\
     echo 'krnnt' | sudo -S make install &&\
