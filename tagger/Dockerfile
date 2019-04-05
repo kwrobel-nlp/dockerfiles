@@ -13,7 +13,7 @@ RUN apt-get update &&\
     rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 RUN pip3 install --upgrade pip
-RUN pip3 install keras==2.1.2 regex progress setproctitle h5py tensorflow flask
+RUN pip3 install keras==2.1.2 regex progress setproctitle h5py tensorflow flask jsonlines
 RUN echo 'krnnt\nkrnnt\n' | adduser krnnt --home /home/krnnt --ingroup sudo
 
 USER krnnt
