@@ -15,7 +15,7 @@ RUN apt-get update &&\
 #   apt-get update &&\
 #   apt-get install -y morfeusz2 morfeusz2-dictionary-sgjp libmorfeusz2 libmorfeusz2-dev python-morfeusz2 &&\
     rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-RUN pip3 install keras==2.1.2 regex progress setproctitle h5py tensorflow flask
+RUN pip3 install keras==2.1.2 regex progress setproctitle h5py tensorflow flask jsonlines
 RUN echo 'krnnt\nkrnnt\n' | adduser krnnt --home /home/krnnt --ingroup sudo
 USER krnnt
 RUN cd &&\
