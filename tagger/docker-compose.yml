@@ -7,7 +7,7 @@ services:
       # Useful during development
       #volumes:
       #- /home/apohllo/src/nlp/3rd-party/krnnt:/home/krnnt/krnnt
-    command: "python3 /home/krnnt/krnnt/krnnt_serve.py /home/krnnt/krnnt/data --maca_config morfeusz2-nkjp --toki_config_path /home/krnnt/"
+    command: "cd home/krnnt/krnnt/ && ./start_gunicorn_server.sh"
     tty: true
     stdin_open: true
     ports:
