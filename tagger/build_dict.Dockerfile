@@ -61,13 +61,13 @@ RUN cd &&\
     cd morfeusz &&\
     wget https://github.com/kwrobel-nlp/krnnt/releases/download/poleval/morfeusz-src-20180923.tar.gz &&\
     tar xvzf morfeusz-src-*.tar.gz &&\
-    wget https://github.com/kwrobel-nlp/krnnt/releases/download/poleval/morfeusz2-dictionary-sgjp_20180923_all.deb &&\
-    echo 'krnnt' | sudo -S dpkg -i morfeusz2-dictionary-sgjp_* &&\
+    wget https://github.com/kwrobel-nlp/krnnt/releases/download/poleval/sgjp-20180923.tab.gz &&\
+    gunzip sgjp-*.tab.gz &&\
     mkdir build &&\
     cd build &&\
     # delete 2 lines from CMake in wrappers
     sed -i "s/.*\(java\|perl\).*//g" ../morfeusz/wrappers/CMakeLists.txt &&\ 
-    cmake -D INPUT_DICTIONARIES=/home/krnnt/morfeusz/sgjp-20180923.tab -D DEFAULT_DICT_NAME=sgjp -D EMBEDDED_DEFAULT_DICT=0 -D INPUT_TAGSET=/home/krnnt/morfeusz/input/morfeusz-sgjp.tagset -D PY=3.4 .. &&\ 
+    cmake -D INPUT_DICTIONARIES=/home/krnnt/morfeusz/sgjp-20180923.tab -D DEFAULT_DICT_NAME=sgjp -D EMBEDDED_DEFAULT_DICT=1 -D INPUT_TAGSET=/home/krnnt/morfeusz/input/morfeusz-sgjp.tagset -D PY=3.4 .. &&\ 
     make -j4 &&\
     echo 'krnnt' | sudo -S make install &&\
     cd morfeusz/wrappers/python3 &&\
@@ -95,5 +95,4 @@ RUN cd &&\
     chmod u+x build_maca_analyse_wrapper.sh &&\
     echo 'krnnt' | sudo -S ./build_maca_analyse_wrapper.sh
 
-#docker build -f Dockerfile . -t krnnt:1.0
-#docker run -p 9200:9200 -it krnnt:1.0 bash -c "cd /home/krnnt/krnnt/ && ./start_gunicorn_server.sh"
+#docker run -p 9200:9200 -it <image_name> bash -c "cd home/krnnt/krnnt/ && ./start_gunicorn_server.sh"

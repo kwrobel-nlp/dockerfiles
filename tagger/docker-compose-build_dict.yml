@@ -3,7 +3,7 @@ services:
   tagger:
     build: 
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: build_dict.Dockerfile
       # Useful during development
       #volumes:
       #- /home/apohllo/src/nlp/3rd-party/krnnt:/home/krnnt/krnnt
