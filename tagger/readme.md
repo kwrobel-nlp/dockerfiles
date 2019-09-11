@@ -40,3 +40,8 @@ kota	space
 .	none
 	.	interp	disamb
 ```
+
+## Configuration
+
+`docker-compose` uses environment variables:
+* `WORKERS=1` - number of processes of KRNNT

@@ -10,7 +10,7 @@ RUN apt-get update &&\
     apt-get install -y wget software-properties-common &&\
     apt-get install -y sudo libncurses-dev python3-pip unzip &&\
     apt-get install -y python-setuptools python-stdeb python-pip python-all-dev python-pyparsing devscripts libcppunit-dev acl &&\
-    apt-get install -y curl &&\
+    apt-get install -y curl hdf5-tools &&\
     rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 RUN pip3 install --upgrade pip setuptools
@@ -44,7 +44,7 @@ RUN cd &&\
     echo 'krnnt' | sudo -S make install
 
 RUN cd &&\ 
-    git clone -b refactor https://github.com/kwrobel-nlp/krnnt &&\
+    git clone -b refactor2 https://github.com/kwrobel-nlp/krnnt &&\
     cd krnnt &&\
     echo 'krnnt' | sudo -S pip3 install -e .[tfcpu] &&\
     mkdir model_data &&\
