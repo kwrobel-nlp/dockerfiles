@@ -44,16 +44,14 @@ RUN cd &&\
     echo 'krnnt' | sudo -S make install
 
 RUN cd &&\ 
-    git clone -b refactor2 https://github.com/kwrobel-nlp/krnnt &&\
+    git clone https://github.com/kwrobel-nlp/krnnt &&\
     cd krnnt &&\
     echo 'krnnt' | sudo -S pip3 install -e .[tfcpu] &&\
     mkdir model_data &&\
     cd model_data &&\
-    wget https://github.com/kwrobel-nlp/krnnt/releases/download/poleval/reanalyze_150epochs_train1.0.zip &&\
-    unzip reanalyze_150epochs_train1.0.zip &&\
-    mv weights_reana150_1.0.hdf5 weights.hdf5 &&\
-    mv lemmatisation_reana150_1.0.pkl lemmatisation.pkl &&\
-    rm reanalyze_150epochs_train1.0.zip
+    wget https://github.com/kwrobel-nlp/krnnt/releases/download/v1.0.0/nkjp_poleval_colloquial+nkjp_poleval.zip &&\
+    unzip nkjp_poleval_colloquial+nkjp_poleval.zip &&\
+    rm nkjp_poleval_colloquial+nkjp_poleval.zip
 ENV PYTHONIOENCODING utf-8
 
 RUN cd &&\
@@ -95,5 +93,7 @@ RUN cd &&\
     chmod u+x build_maca_analyse_wrapper.sh &&\
     echo 'krnnt' | sudo -S ./build_maca_analyse_wrapper.sh
 
+CMD cd /home/krnnt/krnnt/ && ./start_gunicorn_server.sh
+
 #docker build -f Dockerfile . -t krnnt:1.0
-#docker run -p 9200:9200 -it krnnt:1.0 bash -c "cd /home/krnnt/krnnt/ && ./start_gunicorn_server.sh"
+#docker run -p 9003:9003 -it krnnt:1.0 bash -c "cd /home/krnnt/krnnt/ && ./start_gunicorn_server.sh"
