@@ -88,7 +88,7 @@ RUN cd &&\
     echo 'krnnt' | sudo -S ldconfig
 
 RUN cd &&\
-    git clone https://github.com/Zhylkaaa/maca_analyse &&\
+    git clone https://github.com/djstrong/maca_analyse &&\
     cd maca_analyse &&\
     chmod u+x build_maca_analyse_wrapper.sh &&\
     echo 'krnnt' | sudo -S ./build_maca_analyse_wrapper.sh
